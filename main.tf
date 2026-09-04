@@ -1,0 +1,27 @@
+
+terraform {
+  required_providers {
+    kind = {
+      source  = "elioseverojunior/kind"
+      version = "0.0.3"
+    }
+  }
+}
+
+provider "kind" {}
+
+resource "kind_cluster" "devops" {
+  name = var.cluster_name
+
+  node {
+    role = "control-plane"
+  }
+
+  node {
+    role = "worker"
+  }
+
+  node {
+    role = "worker"
+  }
+}
