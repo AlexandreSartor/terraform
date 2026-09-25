@@ -6,16 +6,24 @@ on:
   pull_request:
     branches: [ main ]
 
+# Garante permissão de leitura nos conteúdos do repositório
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22' # Atualizado para remover o aviso de descontinuação do Node 20
+
       - name: Install dependencies
         run: npm ci
+
       - name: Run tests
         run: npm test
