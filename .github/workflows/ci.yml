@@ -26,4 +26,4 @@ jobs:
         run: terraform fmt -check
 
       - name: Terraform Validate
-        run: usuario-VirtualBox
+        run: echo "${{ github.head_ref || github.ref_name }}"
